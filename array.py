@@ -18,13 +18,19 @@ class Array:
         return self.myDict.get(item)
 
     def __sim(self, item):
-        return np.dot(self.array, self.myDict.get(item)) / self.D
+        if item in self.myDict:
+            return np.dot(self.array, self.myDict.get(item)) / self.D
+        return 0
 
     def add(self, item):
         self.array += self.__encode(item)
 
     def add_multiple(self, item, repeat):
         self.array += repeat * self.__encode(item)
+
+    def remove(self, item):
+        if item in self.myDict:
+            self.array -= self.myDict.get(item)
 
     def contains(self, item):
         val = self.__sim(item)
@@ -43,7 +49,6 @@ class Array:
 
     # def traversal(self):
 
-    # def remove(self):
 
     # def setItem(self, index, itemToSet):
 
