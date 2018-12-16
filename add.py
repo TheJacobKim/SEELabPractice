@@ -2,14 +2,7 @@ import numpy as np
 
 
 class Array:
-    """Summary of class here.
 
-    This class tries to prove that HD-Computing can simulate array
-
-    Attributes:
-        add: Add an element to the array
-        contains: Checks if an element is in the array
-    """
     def __init__(self, sizeOfVector):
         self.D = sizeOfVector
         self.array = np.zeros(self.D)
@@ -34,6 +27,10 @@ class Array:
         self.array += repeat * self.__encode(item)
 
     def contains(self, item):
+        val = self.__sim(item)
+        return 0.95 < val < 1.05
+
+    def count(self, item):
         return self.__sim(item)
 
     def test(self):
@@ -41,9 +38,6 @@ class Array:
             array will return value close to zero.
         """
         return np.dot(self.array, np.random.choice([-1, 1], self.D)) / self.D
-
-    def count(self, item):
-        return self.contains(item)
 
     # def __len__(self):
 
@@ -55,19 +49,21 @@ class Array:
 
 
 if __name__ == '__main__':
-    # Array emulated with HD-Computing can ignore data types
+    # Array emulated with HD-Computing can ignore data types! Super cool
+
     arr = Array(10000)
     arr.add('dog')
     arr.add(1)
     arr.add(True)
-    arr.add_multiple('cat', 3)           # Add cat 3 times?
+    arr.add_multiple('cat', 3)  # Add cat 3 times?
 
-    print(arr.contains('dog'))  # Should print close to 1
-    print(arr.contains(True))   # Should print close to 1
+    print(arr.contains('dog'))  # Should print True
+    print(arr.contains(True))   # Should print True
+    print(arr.contains('cat'))  # Should print True
     print(arr.count('cat'))     # Should print close to 3
     print(arr.test())           # Should print close to 0
 
-    # print(len(arr))           # Should be three
+    # print(len(arr))           # Should be six?
 
 
 
