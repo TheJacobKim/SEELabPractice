@@ -34,7 +34,7 @@ class Array:
 
     def contains(self, item):
         val = self.__sim(item)
-        return 0.95 < val < 1.05
+        return 0.95 < val
 
     def count(self, item):
         return self.__sim(item)
@@ -49,7 +49,6 @@ class Array:
 
     # def traversal(self):
 
-
     # def setItem(self, index, itemToSet):
 
 
@@ -62,11 +61,15 @@ if __name__ == '__main__':
     arr.add(True)
     arr.add_multiple('cat', 3)  # Add cat 3 times?
 
+    print(arr.test())           # Should print close to 0
+
     print(arr.contains('dog'))  # Should print True
     print(arr.contains(True))   # Should print True
     print(arr.contains('cat'))  # Should print True
     print(arr.count('cat'))     # Should print close to 3
-    print(arr.test())           # Should print close to 0
+
+    arr.remove('dog')
+    print(arr.contains('dog'))  # Should print False
 
     # print(len(arr))           # Should be six?
 
